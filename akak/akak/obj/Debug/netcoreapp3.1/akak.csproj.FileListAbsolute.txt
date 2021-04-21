@@ -21,3 +21,4 @@ C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.cspro
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.dll
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.pdb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.genruntimeconfig.cache
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\test.txt
