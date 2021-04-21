@@ -8,6 +8,9 @@ namespace akak
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private char _tile = '-';
+        private int _w = 10;
+        private int _h = 10;
 
         public Game1()
         {
@@ -18,8 +21,6 @@ namespace akak
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -27,7 +28,6 @@ namespace akak
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -35,7 +35,24 @@ namespace akak
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            var key = Keyboard.GetState();
+
+            if (key.IsKeyDown(Keys.P))
+            {
+                _tile = 'p';
+            }  else if (key.IsKeyDown(Keys.O))
+            {
+                _tile = 'o';
+            } else if (key.IsKeyDown(Keys.X))
+            {
+                _tile = 'x';
+            } else if (key.IsKeyDown(Keys.OemMinus))
+            {
+                _tile = '-';
+            }
+
+            //Mouse.GetState().Position
+
 
             base.Update(gameTime);
         }
@@ -43,8 +60,15 @@ namespace akak
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-
-            // TODO: Add your drawing code here
+            /*
+            for (int i = 0; i < w; ++i)
+            {
+                for (int j = 0; j < h; ++j)
+                {
+                    _spriteBatch.Draw(tileTexture, new Rectangle(i * tileSize, j * tileSize, tileSize, tileSize), color);
+                }
+            }
+            */
 
             base.Draw(gameTime);
         }
