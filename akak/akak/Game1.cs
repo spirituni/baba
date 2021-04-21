@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.IO;
 
 namespace akak
 {
@@ -8,6 +10,10 @@ namespace akak
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        private const string fileName = "test.txt";
+        private List<string> fileData = new List<string>();
+
         private char _tile = '-';
         private int _w = 10;
         private int _h = 10;
@@ -28,6 +34,14 @@ namespace akak
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            if (File.Exists(fileName))
+            {
+                using (StreamReader reader = new StreamReader(File.OpenRead(fileName)))
+                {
+                    string data = reader.ReadLine();
+                    fileData.Add(data);
+                }
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -51,7 +65,7 @@ namespace akak
                 _tile = '-';
             }
 
-            //Mouse.GetState().Position
+            // Mouse.GetState().Position
 
 
             base.Update(gameTime);
@@ -59,7 +73,7 @@ namespace akak
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(color: Color.White);
             /*
             for (int i = 0; i < w; ++i)
             {
