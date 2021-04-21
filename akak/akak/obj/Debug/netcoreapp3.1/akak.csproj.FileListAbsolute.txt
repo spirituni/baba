@@ -22,3 +22,9 @@ C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.dll
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.pdb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.genruntimeconfig.cache
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\test.txt
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\sprites.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\aki.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\blue.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\pink.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\yellow.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\white.xnb
