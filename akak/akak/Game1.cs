@@ -16,6 +16,8 @@ namespace akak
         private Texture2D _pink;
         private Texture2D _yellow;
         private Texture2D _white;
+        private Texture2D _box;
+        private Texture2D _circle;
 
         private const string fileName = "test.txt";
         private List<string> fileData = new List<string>();
@@ -49,6 +51,8 @@ namespace akak
             _pink = this.Content.Load<Texture2D>("pink");
             _yellow = this.Content.Load<Texture2D>("yellow");
             _white = this.Content.Load<Texture2D>("white");
+            _box = this.Content.Load<Texture2D>("box");
+            _circle = this.Content.Load<Texture2D>("circle");
 
             if (File.Exists(fileName))
             {
@@ -102,7 +106,6 @@ namespace akak
             {
                 _cursor.X = 0;
             }
-
             if (_cursor.Y < 0)
             {
                 _cursor.Y = 0;
@@ -127,7 +130,6 @@ namespace akak
 
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(_aki, new Rectangle(0, 0, 50, 50), Color.White);
             /*
                         _spriteBatch.Draw(_aki, new Rectangle(0, 0, 50, 50), Color.White);
                         _spriteBatch.Draw(_blue, new Rectangle(0, 0, 50, 50), Color.White);
@@ -144,7 +146,25 @@ namespace akak
                 }
             }
 
-            _spriteBatch.Draw(_pink, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            // draw cursor
+            _spriteBatch.Draw(_yellow, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+
+            if (_tile == 'p')
+            {
+                _spriteBatch.Draw(_aki, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            }
+            else if (_tile == 'o')
+            {
+                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            }
+            else if (_tile == 'x')
+            {
+                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            }
+            else if (_tile == '-')
+            {
+                _spriteBatch.Draw(_pink, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            }
 
             _spriteBatch.End();
 
