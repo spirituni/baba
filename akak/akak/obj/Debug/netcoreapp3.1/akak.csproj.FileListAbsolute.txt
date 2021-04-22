@@ -21,7 +21,6 @@ C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.cspro
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.dll
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.pdb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\obj\Debug\netcoreapp3.1\akak.genruntimeconfig.cache
-C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\test.txt
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\sprites.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\aki.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\blue.xnb
@@ -30,3 +29,6 @@ C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\ye
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\white.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\box.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\circle.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\level.txt
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\outline.xnb
+C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\dash.xnb

@@ -12,10 +12,10 @@
   <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
-    <None Remove="test.txt" />
+    <None Remove="level.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="test.txt">
+    <Content Include="level.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

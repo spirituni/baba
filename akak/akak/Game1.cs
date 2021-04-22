@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 namespace akak
 {
@@ -18,16 +19,19 @@ namespace akak
         private Texture2D _white;
         private Texture2D _box;
         private Texture2D _circle;
+        private Texture2D _dash;
 
         private char _tile = 'p';
         private Vector2 _cursor = new Vector2(0, 0);
-        private int _w = 10;
-        private int _h = 10;
+        private const int _w = 10;
+        private const int _h = 10;
 
         private int _delay = 0;
         private bool _place = false;
 
-        private const string fileName = "test.txt";
+        private char[,] _level = new char[_h,_w];
+
+        private const string fileName = "level.txt";
         private List<string> fileData = new List<string>();
 
         public Game1()
@@ -49,6 +53,7 @@ namespace akak
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // read textures
             _aki = this.Content.Load<Texture2D>("aki");
             _blue = this.Content.Load<Texture2D>("blue");
             _pink = this.Content.Load<Texture2D>("pink");
@@ -56,13 +61,22 @@ namespace akak
             _white = this.Content.Load<Texture2D>("white");
             _box = this.Content.Load<Texture2D>("box");
             _circle = this.Content.Load<Texture2D>("circle");
+            _dash = this.Content.Load<Texture2D>("dash");
 
+            // read level file
             if (File.Exists(fileName))
             {
-                using (StreamReader reader = new StreamReader(File.OpenRead(fileName)))
+                StreamReader reader = new StreamReader(fileName);
+                string line;
+                int row = 0;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    string data = reader.ReadLine();
-                    fileData.Add(data);
+                    Trace.WriteLine(line);
+                    for (int col = 0; col < _w; ++col)
+                    {
+                        _level[row, col] = line[col];
+                    }
+                    ++row;
                 }
             }
         }
@@ -74,11 +88,6 @@ namespace akak
 
             base.Update(gameTime);
 
-            if (_delay++ != 5)
-            {
-                return;
-            }
-
             var key = Keyboard.GetState();
 
             // place tile
@@ -87,19 +96,27 @@ namespace akak
                 _place = true;
             }
 
+            if (_delay++ != 5)
+            {
+                return;
+            }
+
             // change cursor
-            if (key.IsKeyDown(Keys.P))
+            if (key.IsKeyDown(Keys.D1))
             {
                 _tile = 'p';
-            }  else if (key.IsKeyDown(Keys.O))
+            }  else if (key.IsKeyDown(Keys.D2))
             {
                 _tile = 'o';
-            } else if (key.IsKeyDown(Keys.X))
+            } else if (key.IsKeyDown(Keys.D3))
             {
                 _tile = 'x';
-            } else if (key.IsKeyDown(Keys.OemMinus))
+            } else if (key.IsKeyDown(Keys.D4))
             {
                 _tile = '-';
+            } else if (key.IsKeyDown(Keys.D5))
+            {
+                _tile = ' ';
             }
 
             // move cursor
@@ -148,19 +165,32 @@ namespace akak
 
             _spriteBatch.Begin();
 
-            /*
-                        _spriteBatch.Draw(_aki, new Rectangle(0, 0, 50, 50), Color.White);
-                        _spriteBatch.Draw(_blue, new Rectangle(0, 0, 50, 50), Color.White);
-                        _spriteBatch.Draw(_pink, new Rectangle(0, 0, 50, 50), Color.White);
-                        _spriteBatch.Draw(_yellow, new Rectangle(0, 0, 50, 50), Color.White);
-            */
-
             // draw grid
             for (int i = 0; i < _w; ++i)
             {
                 for (int j = 0; j < _h; ++j)
                 {
-                    _spriteBatch.Draw(_blue, new Rectangle(i*50, j*50, 50, 50), Color.White);
+                    char t = _level[i, j];
+                    if (t == ' ')
+                    {
+                        _spriteBatch.Draw(_white, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                    } else if (t == 'p')
+                    {
+                        _spriteBatch.Draw(_aki, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                    } else if (t == 'o')
+                    {
+                        _spriteBatch.Draw(_blue, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_circle, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                    } else if (t == 'x')
+                    {
+                        _spriteBatch.Draw(_blue, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_box, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                    } else if (t == '-')
+                    {
+                        _spriteBatch.Draw(_pink, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                    }
+
+
                 }
             }
 
@@ -181,13 +211,16 @@ namespace akak
             }
             else if (_tile == '-')
             {
-                _spriteBatch.Draw(_pink, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_dash, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
             }
 
-            // consume place
+            // place tile at cursor
             if (_place)
             {
-                _spriteBatch.Draw(_blue, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                int x = (int)_cursor.X;
+                int y = (int)_cursor.Y;
+                _spriteBatch.Draw(_pink, new Rectangle(x, y, 50, 50), Color.White);
+                _level[x / 50, y / 50] = _tile;
                 _place = false;
             }
 
