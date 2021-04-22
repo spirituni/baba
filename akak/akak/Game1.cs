@@ -126,27 +126,32 @@ namespace akak
                 _saveFile();
             }
 
+            // change cursor
+            else if (key.IsKeyDown(Keys.D1))
+            {
+                _tile = 'p';
+            }
+            else if (key.IsKeyDown(Keys.D2))
+            {
+                _tile = 'o';
+            }
+            else if (key.IsKeyDown(Keys.D3))
+            {
+                _tile = 'x';
+            }
+            else if (key.IsKeyDown(Keys.D4))
+            {
+                _tile = '-';
+            }
+            else if (key.IsKeyDown(Keys.D5))
+            {
+                _tile = ' ';
+            }
+
+
             if (_delay++ != 5)
             {
                 return;
-            }
-
-            // change cursor
-            if (key.IsKeyDown(Keys.D1))
-            {
-                _tile = 'p';
-            }  else if (key.IsKeyDown(Keys.D2))
-            {
-                _tile = 'o';
-            } else if (key.IsKeyDown(Keys.D3))
-            {
-                _tile = 'x';
-            } else if (key.IsKeyDown(Keys.D4))
-            {
-                _tile = '-';
-            } else if (key.IsKeyDown(Keys.D5))
-            {
-                _tile = ' ';
             }
 
             // move cursor
@@ -186,7 +191,6 @@ namespace akak
             }
 
             _delay = 0;
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -233,11 +237,11 @@ namespace akak
             }
             else if (_tile == 'o')
             {
-                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
             }
             else if (_tile == 'x')
             {
-                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
             }
             else if (_tile == '-')
             {
