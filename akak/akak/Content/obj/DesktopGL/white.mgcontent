@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/white.png</SourceFile>
-  <SourceTime>2021-04-21T16:49:09.3685335-07:00</SourceTime>
+  <SourceTime>2021-04-21T17:01:22-07:00</SourceTime>
   <DestFile>C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/white.xnb</DestFile>
-  <DestTime>2021-04-21T16:49:28.938627-07:00</DestTime>
+  <DestTime>2021-04-21T17:01:50.5587735-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T07:05:36-08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

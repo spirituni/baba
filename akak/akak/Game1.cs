@@ -21,6 +21,7 @@ namespace akak
         private List<string> fileData = new List<string>();
 
         private char _tile = '-';
+        private Vector2 _cursor = new Vector2(0, 0);
         private int _w = 10;
         private int _h = 10;
 
@@ -34,6 +35,9 @@ namespace akak
         protected override void Initialize()
         {
             base.Initialize();
+            _graphics.PreferredBackBufferWidth = 500;
+            _graphics.PreferredBackBufferHeight = 500;
+            _graphics.ApplyChanges();
         }
 
         protected override void LoadContent()
@@ -44,7 +48,7 @@ namespace akak
             _blue = this.Content.Load<Texture2D>("blue");
             _pink = this.Content.Load<Texture2D>("pink");
             _yellow = this.Content.Load<Texture2D>("yellow");
-            _yellow = this.Content.Load<Texture2D>("white");
+            _white = this.Content.Load<Texture2D>("white");
 
             if (File.Exists(fileName))
             {
@@ -77,8 +81,42 @@ namespace akak
                 _tile = '-';
             }
 
-            // Mouse.GetState().Position
+            if (key.IsKeyDown(Keys.W))
+            {
+                _cursor -= new Vector2(0, 50);
+            }
+            if (key.IsKeyDown(Keys.A))
+            {
+                _cursor -= new Vector2(50, 0);
+            }
+            if (key.IsKeyDown(Keys.S))
+            {
+                _cursor += new Vector2(0, 50);
+            }
+            if (key.IsKeyDown(Keys.D))
+            {
+                _cursor += new Vector2(50, 0);
+            }
 
+            if (_cursor.X < 0)
+            {
+                _cursor.X = 0;
+            }
+
+            if (_cursor.Y < 0)
+            {
+                _cursor.Y = 0;
+            }
+            if (_cursor.X > 50 * (_w - 1))
+            {
+                _cursor.X = 50 * (_w - 1);
+            }
+            if (_cursor.Y > 50 * (_h - 1))
+            {
+                _cursor.Y = 50 * (_h - 1);
+            }
+
+            // Mouse.GetState().Position
 
             base.Update(gameTime);
         }
@@ -97,6 +135,7 @@ namespace akak
                         _spriteBatch.Draw(_yellow, new Rectangle(0, 0, 50, 50), Color.White);
             */
 
+            // draw grid
             for (int i = 0; i < _w; ++i)
             {
                 for (int j = 0; j < _h; ++j)
@@ -104,6 +143,8 @@ namespace akak
                     _spriteBatch.Draw(_blue, new Rectangle(i*50, j*50, 50, 50), Color.White);
                 }
             }
+
+            _spriteBatch.Draw(_pink, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
 
             _spriteBatch.End();
 
