@@ -29,6 +29,5 @@ C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\ye
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\white.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\box.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\circle.xnb
-C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\level.txt
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\outline.xnb
 C:\Users\Judy\Documents\GitHub\baba\akak\akak\bin\Debug\netcoreapp3.1\Content\dash.xnb

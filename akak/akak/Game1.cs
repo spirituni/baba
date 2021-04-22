@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using System;
 
 namespace akak
 {
@@ -32,13 +33,35 @@ namespace akak
         private char[,] _level = new char[_h,_w];
 
         private const string fileName = "level.txt";
-        private List<string> fileData = new List<string>();
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+        }
+        private void _saveFile()
+        {
+            try
+            {
+                Trace.WriteLine("Writing to file");
+                using (StreamWriter writer = new StreamWriter(fileName))
+                {
+                    for (int row = 0; row < _h; ++row)
+                    {
+                        string line = "";
+                        for (int col = 0; col < _w; ++col)
+                        {
+                            line += _level[row, col];
+                        }
+                        Trace.WriteLine(line);
+                        writer.WriteLine(line);
+                    }
+                }
+            } catch (Exception e)
+            {
+                Trace.WriteLine(e);
+            }
         }
 
         protected override void Initialize()
@@ -64,20 +87,26 @@ namespace akak
             _dash = this.Content.Load<Texture2D>("dash");
 
             // read level file
-            if (File.Exists(fileName))
+            try
             {
-                StreamReader reader = new StreamReader(fileName);
-                string line;
-                int row = 0;
-                while ((line = reader.ReadLine()) != null)
+                Trace.WriteLine("Reading to file");
+                using (StreamReader reader = new StreamReader(fileName))
                 {
-                    Trace.WriteLine(line);
-                    for (int col = 0; col < _w; ++col)
+                    string line;
+                    int row = 0;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        _level[row, col] = line[col];
+                        Trace.WriteLine(line);
+                        for (int col = 0; col < _w; ++col)
+                        {
+                            _level[row, col] = line[col];
+                        }
+                        ++row;
                     }
-                    ++row;
                 }
+            } catch (Exception e)
+            {
+                Trace.WriteLine(e);
             }
         }
 
@@ -94,6 +123,7 @@ namespace akak
             if (key.IsKeyDown(Keys.Enter))
             {
                 _place = true;
+                _saveFile();
             }
 
             if (_delay++ != 5)
@@ -166,9 +196,9 @@ namespace akak
             _spriteBatch.Begin();
 
             // draw grid
-            for (int i = 0; i < _w; ++i)
+            for (int i = 0; i < _h; ++i)
             {
-                for (int j = 0; j < _h; ++j)
+                for (int j = 0; j < _w; ++j)
                 {
                     char t = _level[i, j];
                     if (t == ' ')
@@ -203,11 +233,11 @@ namespace akak
             }
             else if (_tile == 'o')
             {
-                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
             }
             else if (_tile == 'x')
             {
-                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
             }
             else if (_tile == '-')
             {

@@ -12,12 +12,6 @@
   <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
-    <None Remove="level.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="level.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
