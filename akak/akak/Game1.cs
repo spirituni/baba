@@ -19,13 +19,16 @@ namespace akak
         private Texture2D _box;
         private Texture2D _circle;
 
-        private const string fileName = "test.txt";
-        private List<string> fileData = new List<string>();
-
-        private char _tile = '-';
+        private char _tile = 'p';
         private Vector2 _cursor = new Vector2(0, 0);
         private int _w = 10;
         private int _h = 10;
+
+        private int _delay = 0;
+        private bool _place = false;
+
+        private const string fileName = "test.txt";
+        private List<string> fileData = new List<string>();
 
         public Game1()
         {
@@ -69,8 +72,22 @@ namespace akak
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            base.Update(gameTime);
+
+            if (_delay++ != 5)
+            {
+                return;
+            }
+
             var key = Keyboard.GetState();
 
+            // place tile
+            if (key.IsKeyDown(Keys.Enter))
+            {
+                _place = true;
+            }
+
+            // change cursor
             if (key.IsKeyDown(Keys.P))
             {
                 _tile = 'p';
@@ -85,23 +102,25 @@ namespace akak
                 _tile = '-';
             }
 
-            if (key.IsKeyDown(Keys.W))
+            // move cursor
+            if (key.IsKeyDown(Keys.W) || key.IsKeyDown(Keys.Up))
             {
                 _cursor -= new Vector2(0, 50);
             }
-            if (key.IsKeyDown(Keys.A))
+            if (key.IsKeyDown(Keys.A) || key.IsKeyDown(Keys.Left))
             {
                 _cursor -= new Vector2(50, 0);
             }
-            if (key.IsKeyDown(Keys.S))
+            if (key.IsKeyDown(Keys.S) || key.IsKeyDown(Keys.Down))
             {
                 _cursor += new Vector2(0, 50);
             }
-            if (key.IsKeyDown(Keys.D))
+            if (key.IsKeyDown(Keys.D) || key.IsKeyDown(Keys.Right))
             {
                 _cursor += new Vector2(50, 0);
             }
 
+            // keep cursor in bounds
             if (_cursor.X < 0)
             {
                 _cursor.X = 0;
@@ -119,9 +138,8 @@ namespace akak
                 _cursor.Y = 50 * (_h - 1);
             }
 
-            // Mouse.GetState().Position
+            _delay = 0;
 
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -164,6 +182,13 @@ namespace akak
             else if (_tile == '-')
             {
                 _spriteBatch.Draw(_pink, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            }
+
+            // consume place
+            if (_place)
+            {
+                _spriteBatch.Draw(_blue, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _place = false;
             }
 
             _spriteBatch.End();
