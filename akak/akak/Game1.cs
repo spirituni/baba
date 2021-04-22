@@ -200,7 +200,7 @@ namespace akak
             {
                 for (int j = 0; j < _w; ++j)
                 {
-                    char t = _level[i, j];
+                    char t = _level[j, i];
                     if (t == ' ')
                     {
                         _spriteBatch.Draw(_white, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
@@ -250,7 +250,7 @@ namespace akak
                 int x = (int)_cursor.X;
                 int y = (int)_cursor.Y;
                 _spriteBatch.Draw(_pink, new Rectangle(x, y, 50, 50), Color.White);
-                _level[x / 50, y / 50] = _tile;
+                _level[y / 50, x / 50] = _tile;
                 _place = false;
             }
 
