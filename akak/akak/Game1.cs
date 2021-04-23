@@ -102,6 +102,10 @@ namespace akak
                             _level[row, col] = line[col];
                         }
                         ++row;
+                        if (row == _h)
+                        {
+                            break;
+                        }
                     }
                 }
             } catch (Exception e)
@@ -200,61 +204,62 @@ namespace akak
             _spriteBatch.Begin();
 
             // draw grid
-            for (int i = 0; i < _h; ++i)
+            for (int r = 0; r < _h; ++r)
             {
-                for (int j = 0; j < _w; ++j)
+                for (int c = 0; c < _w; ++c)
                 {
-                    char t = _level[j, i];
+                    char t = _level[r, c];
                     if (t == ' ')
                     {
-                        _spriteBatch.Draw(_white, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_white, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     } else if (t == 'p')
                     {
-                        _spriteBatch.Draw(_aki, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_aki, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     } else if (t == 'o')
                     {
-                        _spriteBatch.Draw(_blue, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
-                        _spriteBatch.Draw(_circle, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_blue, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_circle, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     } else if (t == 'x')
                     {
-                        _spriteBatch.Draw(_blue, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
-                        _spriteBatch.Draw(_box, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_blue, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_box, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     } else if (t == '-')
                     {
-                        _spriteBatch.Draw(_pink, new Rectangle(i * 50, j * 50, 50, 50), Color.White);
+                        _spriteBatch.Draw(_pink, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     }
 
 
                 }
             }
 
+            int row = (int)_cursor.Y;
+            int col = (int)_cursor.X;
+
             // draw cursor
-            _spriteBatch.Draw(_yellow, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+            _spriteBatch.Draw(_yellow, new Rectangle(col, row, 50, 50), Color.White);
 
             if (_tile == 'p')
             {
-                _spriteBatch.Draw(_aki, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_aki, new Rectangle(col, row, 50, 50), Color.White);
             }
             else if (_tile == 'o')
             {
-                _spriteBatch.Draw(_circle, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_circle, new Rectangle(col, row, 50, 50), Color.White);
             }
             else if (_tile == 'x')
             {
-                _spriteBatch.Draw(_box, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_box, new Rectangle(col, row, 50, 50), Color.White);
             }
             else if (_tile == '-')
             {
-                _spriteBatch.Draw(_dash, new Rectangle((int)_cursor.X, (int)_cursor.Y, 50, 50), Color.White);
+                _spriteBatch.Draw(_dash, new Rectangle(col, row, 50, 50), Color.White);
             }
 
             // place tile at cursor
             if (_place)
             {
-                int x = (int)_cursor.X;
-                int y = (int)_cursor.Y;
-                _spriteBatch.Draw(_pink, new Rectangle(x, y, 50, 50), Color.White);
-                _level[y / 50, x / 50] = _tile;
+                _spriteBatch.Draw(_pink, new Rectangle(col, row, 50, 50), Color.White);
+                _level[row / 50, col / 50] = _tile;
                 _place = false;
             }
 
