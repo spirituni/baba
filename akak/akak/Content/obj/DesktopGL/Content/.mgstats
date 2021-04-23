@@ -1,9 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/aki.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/aki.xnb","TextureProcessor","Texture2DContent",3078,10085,0.1126117
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/blue.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/blue.xnb","TextureProcessor","Texture2DContent",3073,10085,0.0019937
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/box.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/box.xnb","TextureProcessor","Texture2DContent",3282,10085,0.0014076
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/circle.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/circle.xnb","TextureProcessor","Texture2DContent",3275,10085,0.0014046
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/dash.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/dash.xnb","TextureProcessor","Texture2DContent",3255,10085,0.0014841
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/pink.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/pink.xnb","TextureProcessor","Texture2DContent",3069,10085,0.0017389
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/white.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/white.xnb","TextureProcessor","Texture2DContent",3340,10085,0.001463
-"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/yellow.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/yellow.xnb","TextureProcessor","Texture2DContent",3065,10085,0.0016553
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/aki.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/aki.xnb","TextureProcessor","Texture2DContent",3078,10085,0.1105498
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/blue.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/blue.xnb","TextureProcessor","Texture2DContent",3073,10085,0.001548
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/box.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/box.xnb","TextureProcessor","Texture2DContent",3282,10085,0.0014005
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/circle.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/circle.xnb","TextureProcessor","Texture2DContent",3275,10085,0.0013783
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/dash.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/dash.xnb","TextureProcessor","Texture2DContent",3255,10085,0.0013318
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/pink.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/pink.xnb","TextureProcessor","Texture2DContent",3069,10085,0.0014461
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/white.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/white.xnb","TextureProcessor","Texture2DContent",3340,10085,0.0014296
+"C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/yellow.png","C:/Users/Judy/Documents/GitHub/baba/akak/akak/Content/bin/DesktopGL/Content/yellow.xnb","TextureProcessor","Texture2DContent",3065,10085,0.001554

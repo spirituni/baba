@@ -13,6 +13,7 @@ namespace akak
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        // sprites (images) that can be drawn
         private Texture2D _aki;
         private Texture2D _blue;
         private Texture2D _pink;
@@ -22,15 +23,15 @@ namespace akak
         private Texture2D _circle;
         private Texture2D _dash;
 
-        private char _tile = 'p';
-        private Vector2 _cursor = new Vector2(0, 0);
-        private const int _w = 10;
-        private const int _h = 10;
+        private int _delay = 0;                         // counter to decrease movement speed
+        private bool _place = false;                    // whether or not to place the tile
 
-        private int _delay = 0;
-        private bool _place = false;
+        private char _tile = 'p';                       // the tile type currently selected, can be: 'p' for player, 'x' for box, 'o' for hole, '-' for wall, or ' ' for blank
+        private Vector2 _cursor = new Vector2(0, 0);    // x and y coordinates of which tile on the map is selected
+        private const int _w = 10;                      // expected width of the level in tiles
+        private const int _h = 10;                      // expected height of the level in tiles
 
-        private char[,] _level = new char[_h,_w];
+        private char[,] _level = new char[_h,_w];       // 2d array of characters that represents each tile on the map, with _h rows and _w columns
 
         private const string fileName = "level.txt";
 
@@ -47,16 +48,9 @@ namespace akak
                 Trace.WriteLine("Writing to file");
                 using (StreamWriter writer = new StreamWriter(fileName))
                 {
-                    for (int row = 0; row < _h; ++row)
-                    {
-                        string line = "";
-                        for (int col = 0; col < _w; ++col)
-                        {
-                            line += _level[row, col];
-                        }
-                        Trace.WriteLine(line);
-                        writer.WriteLine(line);
-                    }
+
+                    // TODO: Save changes made to the level back into the file
+                    writer.WriteLine("This string will be saved to the file.");
                 }
             } catch (Exception e)
             {
@@ -89,23 +83,14 @@ namespace akak
             // read level file
             try
             {
-                Trace.WriteLine("Reading to file");
+                Trace.WriteLine("Reading file one line at a time");
                 using (StreamReader reader = new StreamReader(fileName))
                 {
+                    // TODO: Fill the _level array with data from the file "level.txt"
                     string line;
-                    int row = 0;
                     while ((line = reader.ReadLine()) != null)
                     {
                         Trace.WriteLine(line);
-                        for (int col = 0; col < _w; ++col)
-                        {
-                            _level[row, col] = line[col];
-                        }
-                        ++row;
-                        if (row == _h)
-                        {
-                            break;
-                        }
                     }
                 }
             } catch (Exception e)
@@ -227,8 +212,6 @@ namespace akak
                     {
                         _spriteBatch.Draw(_pink, new Rectangle(c * 50, r * 50, 50, 50), Color.White);
                     }
-
-
                 }
             }
 
